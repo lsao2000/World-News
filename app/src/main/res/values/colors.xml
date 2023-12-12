@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="back_intro">#C73F24E3</color>
+    <color name="back_input">#C7E4DEDE</color>
+    <color name="lightmode_button">#1E1E20</color>
+    <color name="link">#C71028FF</color>
+    <color name="tabItem">#C7777676</color>
+</resources>

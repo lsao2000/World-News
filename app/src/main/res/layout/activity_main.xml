@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/lightmode_button"
+    android:id="@+id/actionBar"
+    >
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/brand"
+    android:textColor="@color/white"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginStart="10dp"
+    android:textSize="25sp"
+    android:layout_gravity="center_vertical"
+    android:textStyle="bold"
+        />
+
+    </LinearLayout>
+
+    <FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/frame"
+    android:layout_below="@id/actionBar"
+    android:layout_above="@id/navigation"
+    android:layout_marginBottom="20dp"
+    />
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/lightmode_button"
+    android:layout_alignParentBottom="true"
+    android:id="@+id/navigation"
+    android:gravity="center"
+    android:weightSum="4">
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:gravity="center">
+            <View 
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/home"
+            android:background="@drawable/home"
+            />
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/tabItem"
+            android:text="@string/home"
+            android:id="@+id/homeText"
+            />
+        </LinearLayout>
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="5dp"
+        android:layout_weight="1">
+          <View 
+          android:layout_width="25dp"
+          android:layout_height="25dp"
+          android:id="@+id/Favourite"
+          android:background="@drawable/favorite"/>
+          <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="@color/tabItem"
+          android:text="@string/favorite"
+          android:id="@+id/favorText"
+          />
+        </LinearLayout>
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:padding="5dp"
+        android:gravity="center">
+            <View 
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/Room"
+            android:background="@drawable/rooms"
+            />
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/room"
+            android:textColor="@color/tabItem"
+            android:id="@+id/roomText"
+            />
+        </LinearLayout>
+        <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="5dp"
+        android:layout_weight="1">
+            <View 
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:id="@+id/search"
+            android:background="@drawable/search"
+            />
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/search"
+            android:textColor="@color/tabItem"
+            android:id="@+id/searchText"
+            />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+
+
+
+
+
+
