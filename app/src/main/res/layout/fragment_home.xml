@@ -19,31 +19,37 @@ tools:context=".ui.FavoriteFragment">
     app:tabSelectedTextColor="@color/lightmode_button"
     >
     <com.google.android.material.tabs.TabItem
+        android:id="@+id/allNews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ALL"
         />
     <com.google.android.material.tabs.TabItem
+        android:id="@+id/sportsNews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SPORTS"
         />
     <com.google.android.material.tabs.TabItem
+        android:id="@+id/healthNews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="HEALTH"
         />
     <com.google.android.material.tabs.TabItem
+        android:id="@+id/scienceNews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="SCIENCE"
         />
     <com.google.android.material.tabs.TabItem
+        android:id="@+id/entertainmentNews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ENTERTAINMENT"
         />
     <com.google.android.material.tabs.TabItem
+        android:id="@+id/technologyNews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TECHNOLOGY"

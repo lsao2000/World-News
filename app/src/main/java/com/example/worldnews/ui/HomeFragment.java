@@ -8,22 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.example.worldnews.R;
-import com.example.worldnews.data.retrofitApi.ApiInterface;
-import com.example.worldnews.data.retrofitApi.GetRetro;
-import com.example.worldnews.data.retrofitApi.NewsObject;
-import com.example.worldnews.viewModelConnector.NewsAdapter;
-
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Call;
+import com.example.worldnews.viewModelConnector.SwitchActionsFragment;
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
 
 public class HomeFragment extends Fragment {
     private View view;
     private RecyclerView recycle;
+    private TabLayout parentTabs;
+    private TabItem allNews, healthNews, scienceNews, entertainmentNews, technologyNews, sportsNews;
    public HomeFragment() {
         // Required empty public constructor
     }
@@ -33,25 +29,83 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
         recycle = view.findViewById(R.id.recycle);
+//        allNews = view.findViewById(R.id.allNews);
+//        scienceNews = view.findViewById(R.id.scienceNews);
+//        healthNews = view.findViewById(R.id.healthNews);
+//        entertainmentNews = view.findViewById(R.id.entertainmentNews);
+//        sportsNews = view.findViewById(R.id.sportsNews);
+//        technologyNews = view.findViewById(R.id.technologyNews);
+        parentTabs = view.findViewById(R.id.tablayout);
+
         recycle.setLayoutManager(new LinearLayoutManager(getContext()));
         recycle.setHasFixedSize(true);
-       ApiInterface retro = GetRetro.getRetrofit().create(ApiInterface.class);
-        Call<NewsObject> data = retro.getArticles();
-        data.enqueue(new Callback<NewsObject>() {
+        SwitchActionsFragment.getNews(recycle, getContext(),"all");
+        parentTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
-            public void onResponse(Call<NewsObject> call, Response<NewsObject> response) {
-                recycle.setAdapter(new NewsAdapter(response.body().getArticles(), getContext()));
-//                Toast.makeText(getContext(),"The results is : "+ response.body().getArticles(), Toast.LENGTH_LONG).show();
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch(tab.getPosition()){
+                    case 0:
+                        SwitchActionsFragment.getNews(recycle, getContext(),"all");
+                        break;
+                    case 1:
+                        SwitchActionsFragment.getNews(recycle, getContext(), "sports");
+                        break;
+                    case 2:
+                        SwitchActionsFragment.getNews(recycle, getContext(), "health");
+                        break;
+                    case 3:
+                        SwitchActionsFragment.getNews(recycle, getContext(), "science");
+                        break;
+                    case 4:
+                        SwitchActionsFragment.getNews(recycle, getContext(), "entertainment");
+                        break;
+                    case 5:
+                        SwitchActionsFragment.getNews(recycle, getContext(), "technology");
+                        break;
+                }
             }
 
             @Override
-            public void onFailure(Call<NewsObject> call, Throwable t) {
-//                https://newsapi.org/v2/
-                Log.i("newsFail", t.getMessage());
-//                Toast.makeText(getContext(),"The results is : "+ t.getMessage(), Toast.LENGTH_LONG).show();
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
             }
         });
-
+//        allNews.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view){
+//                SwitchActionsFragment.getNews(recycle, getContext(),"all");
+//            }
+//        });
+//        sportsNews.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view){
+//            }
+//        });
+//        technologyNews.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view){
+//            }
+//        });
+//        entertainmentNews.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view){
+//            }
+//        });
+//        healthNews.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view){
+//            }
+//        });
+//        scienceNews.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view){
+//            }
+//        });
 
         return view;
     }
