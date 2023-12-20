@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.worldnews.data.retrofitApi.ApiInterface;
 import com.example.worldnews.data.retrofitApi.GetRetro;
 import com.example.worldnews.data.retrofitApi.NewsObject;
+import com.example.worldnews.data.retrofitApi.KeyApi;
 public class SwitchActionsFragment {
     
     public static void swithFragment(int id, Fragment fragment, FragmentManager support){
@@ -27,35 +28,36 @@ public class SwitchActionsFragment {
     // this function for getting data from the api and set adapter to the recycleview.
     public static void getNews(RecyclerView recycle, Context context, String newsType){
         ApiInterface retro = null ;
+        retro = GetRetro.getRetrofit().create(ApiInterface.class);
+        Call<NewsObject> data = retro.getArticles();
         switch (newsType){
             case "all":
-                retro = GetRetro.getRetrofit().create(ApiInterface.class);
+                data = retro.getArticles();
                 break;
             case "sports":
-                retro = GetRetro.getRetrofit().create(ApiInterface.class);
+                data = retro.getSportArticle();
                 break;
             case "technology":
-                retro = GetRetro.getRetrofit().create(ApiInterface.class);
+                data = retro.getTechnologyArticle();
                 break;
             case "science":
-                retro = GetRetro.getRetrofit().create(ApiInterface.class);
+                data = retro.getScinceArticle();
                 break;
             case "entertainment":
-                retro = GetRetro.getRetrofit().create(ApiInterface.class);
+                data = retro.getEntertainmentArticle();
                 break;
             case "health":
-                retro = GetRetro.getRetrofit().create(ApiInterface.class);
+                data = retro.getHealthArticle();
                 break;
             default:
-                retro = GetRetro.getRetrofit().create(ApiInterface.class);
+                data = retro.getArticles();
                 break;
         }
 
-        Call<NewsObject> data = retro.getArticles();
         data.enqueue(new Callback<NewsObject>(){
             @Override
             public void onResponse(Call<NewsObject> call, Response<NewsObject> response){
-                recycle.setAdapter(new NewsAdapter(response.body().getArticles(), context));
+                recycle.setAdapter(new NewsAdapter(response.body().getArticles(), context, newsType));
             }
             @Override
             public void onFailure(Call<NewsObject> call, Throwable t){

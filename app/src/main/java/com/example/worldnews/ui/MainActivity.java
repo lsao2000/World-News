@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     private Fragment homefragment, favoriteFragment, searchFragment, roomFragment;
     private TextView homeText, favoriteText, searchText, roomsText;
-    private View home, favorite, search, rooms;
+    private View home, favorite, search, rooms, account;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         favoriteText = findViewById(R.id.favorText);
         searchText = findViewById(R.id.searchText);
         roomsText = findViewById(R.id.roomText);
+        account = findViewById(R.id.account);
         // set default fragment.
         homefragment = new HomeFragment();
         SwitchActionsFragment.swithFragment(R.id.frame, homefragment, getSupportFragmentManager());
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 AnimateFunctionaliy.animateButton(search, searchText, R.drawable.search, "#C7777676");
             }
         });
-        favorite.setOnClickListener(new View.OnClickListener(){
+         favorite.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 favoriteFragment = new FavoriteFragment();
@@ -80,6 +81,12 @@ public class MainActivity extends AppCompatActivity {
                 AnimateFunctionaliy.animateButton(search, searchText, R.drawable.search, "#C7777676");
  
 
+            }
+        });
+        account.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                
             }
         });
     }

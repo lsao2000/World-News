@@ -12,13 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 import android.content.Context;
 import java.util.zip.Inflater;
+import com.example.worldnews.data.roomDb.LocalDb;
+import com.example.worldnews.data.roomDb.FavouritModel;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
     private List<GetArticles> list;
     private Context context;
-    public NewsAdapter(List<GetArticles> list, Context context){
+    private String typeNews;
+    public NewsAdapter(List<GetArticles> list, Context context, String typeNews){
         this.list = list;
         this.context = context;
+        this.typeNews = typeNews;
     }
     @NonNull
     @Override
@@ -34,8 +38,23 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
         holder.date.setText(list.get(position).getDateNews().split("T")[0]);
         holder.details.setText(list.get(position).getDescription());
         holder.author.setText("Author : "+list.get(position).getAuthor());
-
+        if (list.get(position).getUrlImage().equals(null)){
+            holder.img.setVisibility(View.INVISIBLE);
+        }
         Glide.with(context).load(list.get(position).getUrlImage()).into(holder.img);
+        holder.share.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                LocalDb db = LocalDb.getInstance(context);
+                try {
+                    //FavouritModel favor = new FavouritModel(list.get(position).getSource().getName());
+
+                } catch (Exception e) {
+                    //TODO: handle exception
+                }
+
+            }
+        });
     }
 
 
@@ -46,6 +65,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView title, author, source, details, date;
         private ImageView img;
+        private ImageView favourite, share;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
@@ -54,6 +74,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
             details = itemView.findViewById(R.id.description);
             date = itemView.findViewById(R.id.dateNews);
             img = itemView.findViewById(R.id.imgNews);
+            favourite = itemView.findViewById(R.id.favorBtn);
+            share = itemView.findViewById(R.id.shareBtn);
         }
     }
 }

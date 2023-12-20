@@ -29,14 +29,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_home, container, false);
         recycle = view.findViewById(R.id.recycle);
-//        allNews = view.findViewById(R.id.allNews);
-//        scienceNews = view.findViewById(R.id.scienceNews);
-//        healthNews = view.findViewById(R.id.healthNews);
-//        entertainmentNews = view.findViewById(R.id.entertainmentNews);
-//        sportsNews = view.findViewById(R.id.sportsNews);
-//        technologyNews = view.findViewById(R.id.technologyNews);
         parentTabs = view.findViewById(R.id.tablayout);
-
         recycle.setLayoutManager(new LinearLayoutManager(getContext()));
         recycle.setHasFixedSize(true);
         SwitchActionsFragment.getNews(recycle, getContext(),"all");
@@ -75,38 +68,6 @@ public class HomeFragment extends Fragment {
 
             }
         });
-//        allNews.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view){
-//                SwitchActionsFragment.getNews(recycle, getContext(),"all");
-//            }
-//        });
-//        sportsNews.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view){
-//            }
-//        });
-//        technologyNews.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view){
-//            }
-//        });
-//        entertainmentNews.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view){
-//            }
-//        });
-//        healthNews.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view){
-//            }
-//        });
-//        scienceNews.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view){
-//            }
-//        });
-
         return view;
     }
 }
