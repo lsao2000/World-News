@@ -62,7 +62,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         private TextView title, author, source, details, date;
         private ImageView img;
-        private ImageView favourite, share;
+        private View favourite, share;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
