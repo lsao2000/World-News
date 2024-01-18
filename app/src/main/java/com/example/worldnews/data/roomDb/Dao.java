@@ -12,12 +12,12 @@ import java.util.List;
 @androidx.room.Dao
 public interface Dao {
     @Insert(onConflict = OnConflictStrategy.IGNORE) 
-    void insertFavorite(FavouriteModel... favoriteNews);
+    void insertFavorite(FavouritModel... favoriteNews);
     
-    @Query("SELECT FROM favourite_table");
-    List<FavouriteModel> getAllFavourite();
+    @Query("SELECT * FROM favourite_table")
+    List<FavouritModel> getAllFavourite();
 
-    @Delete("Delete FROM favourite_table WHERE favoriteId = :favorId")
+    @Query("DELETE FROM favourite_table WHERE favoriteId = :favorId")
     void DeleteFavorite(int favorId);
 
 }

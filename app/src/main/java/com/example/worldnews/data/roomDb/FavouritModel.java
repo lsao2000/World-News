@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Entity(tableName="favourite_table")
 public class FavouritModel {
     
-    @ColumnInfo(name = "favoriteId");
+    @ColumnInfo(name = "favoriteId")
     @PrimaryKey(autoGenerate=true)
     private int id;
 

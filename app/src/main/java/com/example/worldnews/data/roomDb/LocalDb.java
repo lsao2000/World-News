@@ -11,7 +11,7 @@ public abstract class LocalDb extends RoomDatabase{
     private static volatile LocalDb localDbInstance;
 
     public static synchronized LocalDb getInstance(Context context){
-        if(localDbInstance = null){
+        if(localDbInstance == null){
             localDbInstance = Room.databaseBuilder(context.getApplicationContext(), LocalDb.class, "localdb_user")
                 .allowMainThreadQueries()
                 .build();
