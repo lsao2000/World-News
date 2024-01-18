@@ -13,9 +13,7 @@ import android.widget.TextView;
 import java.util.regex.Pattern;
 import android.graphics.Color;
 
-
 public class AnimateFunctionaliy {
-    
     public static void IntroAnimation(Context context, View v1, View v2, Class<?> any) {
         Animation zoomout = AnimationUtils.loadAnimation(context.getApplicationContext(), R.anim.brand_animation);
         v1.setAnimation(zoomout);

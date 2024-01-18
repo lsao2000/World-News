@@ -52,12 +52,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>{
                 } catch (Exception e) {
                     //TODO: handle exception
                 }
-
             }
         });
     }
-
-
     @Override
     public int getItemCount() {
         return list.size();
